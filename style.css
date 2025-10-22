@@ -445,3 +445,127 @@ img { max-width: 100%; height: auto; }
 /* accessibility: ensure keyboard focus shows card ring */
 #activities .card:focus-within{outline: 3px solid color-mix(in oklab, var(--primary) 60%, transparent);outline-offset:4px;border-radius:var(--radius-md)}
 
+/* ====== Fixes & mobile-first adjustments ====== */
+
+/* 1) زر التطوع: خليّه inline-flex حتى تشتغل خصائص المحاذاة، وبعدين نتحكم به بالميديا */
+#volunteer a {
+  display: inline-flex;            /* بدّلناها من inline */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2) روابط الكورسات: أمنع الـ min-width الكبيرة من تكسر الشاشة */
+#courses nav li { width: 100%; }
+#courses nav a {
+  width: 100%;
+  max-width: 700px;                /* حد أقصى على الشاشات الكبيرة */
+  min-width: 0;                    /* إلغاء القيد القديم */
+  box-sizing: border-box;
+}
+
+/* 3) تحسين سلوك الناف بار على الشاشات الصغيرة */
+.nav {
+  flex-wrap: wrap;                 /* يخلي الروابط تنزل سطر ثاني بدل سكرول أفقي طويل */
+}
+
+/* 4) تباعد أنعم داخل الهيدر على الأجهزة الصغيرة */
+.header-inner {
+  flex-wrap: wrap;
+}
+
+/* 5) تحسين قابلية اللمس للأيقونات بالموبايل */
+.footer-social a {
+  touch-action: manipulation;
+}
+
+/* ====== موبايل (≤ 768px) ====== */
+@media (max-width: 768px) {
+  html { font-size: 15px; } /* يخفّض مقاس الأساس شوي حتى النصوص ترتاح بالموبايل */
+
+  .container { width: min(1100px, 94%); }
+
+  .header-inner {
+    gap: var(--space-2);
+    padding-block: .5rem;
+  }
+
+  .brand__logo { width: 40px; height: 40px; }
+  .brand__title { font-size: var(--fs-500); }
+
+  .nav {
+    gap: .4rem;
+    padding-block: .2rem;
+  }
+  .nav a {
+    padding: .35rem .7rem;
+    font-weight: 600;
+  }
+
+  /* هيرو/أبابت */
+  .about-banner { padding-block: 1.5rem; }
+  .about-banner p { font-size: 1rem; }
+
+  /* كورسات: عرض كامل وبادنك ألطف */
+  #courses nav ul {
+    padding: .25rem; 
+    gap: .75rem;
+    align-items: stretch; /* يخلي الأزرار تتمدد عرضياً */
+  }
+  #courses nav a {
+    padding: .85rem 1.1rem;
+    max-width: none;   /* عرض كامل */
+  }
+
+  /* زر التطوع: وسط الشاشة بعرض مناسب */
+  #volunteer a {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: .75rem auto 0;  /* سنتر */
+    text-align: center;
+  }
+
+  /* كروت النشاطات عندك أصلاً responsive، بس نخفف البادنك */
+  #activities .card-info {
+    padding: 12px;
+  }
+
+  /* أيقونات السوشال تكبر لمساحة لمس مريحة */
+  .footer-social a {
+    width: 46px; height: 46px;
+    border-radius: 16px;
+  }
+}
+
+/* ====== تابلت (769px – 1024px) ====== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  html { font-size: 16px; }
+
+  .nav { gap: .6rem; }
+
+  #courses nav a {
+    max-width: 640px;              /* حجم أنسب على التابلت */
+    padding: 1rem 1.25rem;
+  }
+
+  #volunteer a {
+    display: inline-flex;
+    margin: 0 1rem 0 auto;         /* يبقى يمين إذا اللايآوت يمين-إلى-يسار */
+  }
+}
+
+/* ====== دِسكتوب (≥ 1025px) تحسينات خفيفة) ====== */
+@media (min-width: 1025px) {
+  .nav { gap: clamp(.4rem, 1.8vw, 1.1rem); }
+  #courses nav a { max-width: 700px; }
+}
+
+/* ====== تفضيل تقليل الحركة: أمان إضافي ====== */
+@media (prefers-reduced-motion: reduce) {
+  .nav a, #courses nav a, #volunteer a, #activities .card img {
+    transition: none !important;
+  }
+}
+
+
+
