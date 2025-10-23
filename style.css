@@ -1,0 +1,534 @@
+/* =========================
+   ألوان ومظهر عام (فاتح ومريح)
+========================= */
+:root {
+  --bg: #f9fbfd;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #1a1f2b;
+  --muted: #5a6477;
+  --primary: #215f96;
+  --primary-light: #4b8ec5;
+  --accent: #0097a7;
+  --border: #e0e6ee;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+
+  --radius: 14px;
+  --container: min(1100px, 92vw);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+font-family: "Cairo", "Inter", sans-serif;
+
+
+
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+}
+
+/* الحاوية العامة */
+.container {
+  width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* عناوين */
+h1, h2, h3 {
+  margin: 0 0 0.75rem 0;
+  line-height: 1.25;
+}
+h2 {
+  font-weight: 800;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 2rem);
+}
+
+/* روابط بدون خط */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   رأس الموقع
+========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  inset-inline: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 70px;
+}
+
+/* الشعار والعنوان */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none; /* 👈 هذا يلغي الخط تحت النص */
+}
+
+.brand__logo {
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.brand__title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.brand:hover {
+  text-decoration: none; /* 👈 تأكيد إضافي */
+}
+
+
+/* التنقل */
+.nav {
+  margin-inline-start: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.nav a {
+  color: var(--text);
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  transition: 0.2s;
+  text-decoration: none;
+}
+.nav a:hover {
+  background: #e3f2fd;
+  color: var(--primary);
+}
+
+/* =========================
+   بانر التعريف
+========================= */
+.about-banner {
+  background: linear-gradient(180deg, #e3f2fd 0%, #f9fbfd 100%);
+  border-bottom: 1px solid var(--border);
+  padding-block: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+.about-banner h2 {
+  color: var(--primary);
+}
+.about-banner p {
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0.3rem auto;
+}
+
+/* =========================
+   قسم الدورات
+========================= */
+#courses {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+}
+
+#courses h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+#courses nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* 👈 يجعلها عمودية */
+  align-items: center;   /* يوسّطها بالعرض */
+  gap: 1rem;
+  max-width: 600px;      /* عرض مناسب */
+}
+
+#courses nav li {
+  width: 100%;
+}
+
+#courses a {
+  display: block;
+  width: 100%;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  transition: 0.25s;
+  font-weight: 700;
+  text-decoration: none; /* 👈 هذا يلغي الخط */
+}
+
+#courses a:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-light);
+  box-shadow: 0 10px 25px rgba(30,136,229,0.1);
+  color: var(--primary);
+}
+
+/* ريسبونسف */
+@media (max-width: 480px) {
+  #courses nav ul {
+    max-width: 90%;
+    gap: 0.8rem;
+  }
+  #courses a {
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* =========================
+   قسم التطوع
+========================= */
+#volunteer {
+  padding-block: clamp(2rem, 3vw, 3rem);
+  background: #f5f9ff;
+  text-align: center;
+}
+#volunteer h2 {
+  color: var(--primary);
+}
+#volunteer a {
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(30,136,229,0.25);
+  text-decoration: none;
+  transition: 0.25s;
+}
+#volunteer a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(30,136,229,0.4);
+}
+
+/* =========================
+   الفوتر
+========================= */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-block: 1.5rem;
+  text-align: center;
+}
+
+.footer-brand h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0f4f8;
+  color: var(--primary);
+  border: 1px solid var(--border);
+  transition: 0.2s;
+  text-decoration: none; /* 🚫 إزالة الخط السفلي */
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none; /* 🚫 تأكيد الإزالة عند التحويم */
+}
+
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* =========================
+   تجاوب الموبايل
+========================= */
+@media (max-width: 700px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .brand__title {
+    text-align: center;
+  }
+  .nav {
+    justify-content: center;
+  }
+}
+
+
+
+/* =========================
+   معرض الصور*/
+/* =========================
+   معرض الصور*/
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* شبكة الصور */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* العناصر */
+.gallery-item {
+  flex: 1 1 300px;
+  max-width: 340px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Hover */
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+.gallery-item:hover .gallery-image {
+  transform: scale(1.07);
+}
+
+/* الصورة الوسطية */
+.gallery-item:nth-child(2) {
+  flex: 1 1 300px;
+  max-width: 340px;
+  transform: scale(1.04);
+  box-shadow: 0 10px 32px rgba(0, 140, 255, 0.251);
+  z-index: 2;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.gallery-item:nth-child(2):hover {
+  transform: scale(1.08) translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 140, 255, 0.35);
+  filter: brightness(1.05);
+}
+
+/* 📱 تحسين للموبايل */
+@media (max-width: 768px) {
+  .gallery {
+    flex-wrap: nowrap;         /* يمنع الصور من النزول تحت */
+    overflow-x: auto;          /* يخلي سحب أفقي بالموبايل */
+    scroll-snap-type: x mandatory;
+    gap: 1.2rem;
+    padding-bottom: 1rem;
+  }
+
+  .gallery-item {
+    flex: 0 0 80%;             /* كل صورة تاخذ 80% من عرض الشاشة */
+    max-width: none;
+    scroll-snap-align: center; /* تركّز الصورة بالوسط */
+  }
+
+  .gallery-item:nth-child(2) {
+    flex: 0 0 90%;             /* الصورة الوسطية أكبر شوي */
+    transform: none;
+  }
+
+  /* حركة ناعمة عند السحب */
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/**********/
+/* روابط الهيدر */
+.navbar {
+  display: flex;
+  justify-content: center;  /* بالوسط */
+  align-items: center;
+  flex-wrap: nowrap;        /* يمنع النزول لسطر ثاني */
+  gap: 1rem;                /* المسافة بين الروابط */
+  padding: 0.8rem 1rem;
+  overflow-x: auto;         /* يخلي سحب أفقي بالموبايل إذا ضاق المكان */
+  scroll-snap-type: x mandatory;
+}
+
+.navbar::-webkit-scrollbar {
+  display: none; /* يخفي الشريط */
+}
+
+/* الروابط العامة */
+.nav__link,
+a[href="https://nahdat.org/"] {
+  flex-shrink: 0;           /* يمنع تصغيرهم عند ضيق العرض */
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgb(0, 36, 67);
+  padding: 0.7rem 1.3rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.4px;
+  background: rgba(0, 36, 67, 0.05);
+  scroll-snap-align: center;
+}
+
+/* شكل خاص لمؤسس المنظمة */
+a[href="https://nahdat.org/"] {
+  background: linear-gradient(135deg, #1a69ae, #004b88);
+  color: #fff !important; /* ← يجبر الخط يصير أبيض مهما كان */
+  box-shadow: 0 4px 14px rgba(0, 36, 67, 0.25);
+  font-weight: 800;
+}
+
+
+/* عند المرور */
+a[href="https://nahdat.org/"]:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #004b88, #006edc);
+  box-shadow: 0 6px 20px rgba(0, 110, 220, 0.4);
+}
+
+.nav__link:hover {
+  background: rgb(0, 36, 67);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 36, 67, 0.25);
+}
+
+/* 🎯 تحسين بسيط للموبايل */
+@media (max-width: 768px) {
+  .nav__link,
+  a[href="https://nahdat.org/"] {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+
+
+section[id] {
+  scroll-margin-top: 80px; /* غيّر الرقم حسب ارتفاع الهيدر */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== App Loader ===== */
+#app-loader{
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  background: color-mix(in oklab, var(--bg, #f7fafc) 85%, #fff);
+  z-index: 9999;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+#app-loader.hidden{ opacity: 0; visibility: hidden; }
+
+#app-loader .loader-box{
+  display: grid; place-items: center; gap: .9rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  background: color-mix(in oklab, #ffffff 80%, var(--bg, #f7fafc));
+  border: 1px solid color-mix(in oklab, var(--border, #e6edf5) 70%, #cfd9e6);
+  box-shadow: 0 10px 30px rgba(15,23,42,.12);
+}
+
+/* Spinner */
+.spinner{
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 3px solid color-mix(in oklab, var(--primary, #008cff) 25%, #d8e6ff);
+  border-top-color: var(--primary, #008cff);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loader-text{
+  font: 600 0.95rem/1.2 system-ui, "Noto Sans Arabic", sans-serif;
+  color: color-mix(in oklab, var(--text, #0f172a) 80%, #4b5563);
+}
+
+/* Dark mode */
+:root[data-theme="dark"] #app-loader{
+  background: color-mix(in oklab, #0b1220 86%, #0f172a);
+}
+:root[data-theme="dark"] #app-loader .loader-box{
+  background: color-mix(in oklab, #0b1220 70%, #0f172a);
+  border-color: rgba(255,255,255,.08);
+  box-shadow: 0 12px 36px rgba(0,0,0,.5);
+}
+:root[data-theme="dark"] .loader-text{ color: #dbeafe; }
+
+/* احترام تقليل الحركة */
+@media (prefers-reduced-motion: reduce){
+  .spinner{ animation: none; border-top-color: currentColor; }
+}
